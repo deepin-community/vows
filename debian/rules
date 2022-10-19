@@ -1,0 +1,11 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	help2man --no-info bin/vows >vows.1
+
+override_dh_fixperms:
+	dh_fixperms
+	chmod +x debian/node-vows/usr/share/nodejs/vows/bin/vows

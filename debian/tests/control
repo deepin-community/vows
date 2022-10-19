@@ -1,0 +1,3 @@
+Test-Command: vows --spec
+Depends: @, @builddeps@
+Restrictions: allow-stderr

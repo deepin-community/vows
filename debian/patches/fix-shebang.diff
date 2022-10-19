@@ -1,0 +1,13 @@
+Description: fix shebang
+Author: Xavier Guimard <yadd@debian.org>
+Forwarded: not-needed
+Last-Update: 2020-05-25
+
+--- a/bin/vows
++++ b/bin/vows
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env node
++#!/usr/bin/node
+ 
+ 
+ var path   = require('path'),

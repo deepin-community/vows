@@ -1,0 +1,57 @@
+Description: remove deprecated eyes
+Author: Xavier Guimard <yadd@debian.org>
+Forwarded: not-needed
+Last-Update: 2020-11-07
+
+--- a/bin/vows
++++ b/bin/vows
+@@ -24,11 +24,6 @@
+     specFileExt = /[.(-|_)]((t|T)est|(s|S)pec)\.js$/;
+ }
+ 
+-var inspect = require('eyes').inspector({
+-    stream: null,
+-    styles: { string: 'grey', regexp: 'grey' }
+-});
+-
+ var vows = require('../lib/vows');
+ var cutils = require('../lib/vows/console');
+ var stylize = require('../lib/vows/console').stylize;
+@@ -185,7 +180,6 @@
+ 
+ if (options.nocolor) {
+     cutils.nocolor = true;
+-    inspect = require('eyes').inspector({ stream: null, styles: false });
+ }
+ 
+ if (options.supressStdout) {
+@@ -633,7 +627,7 @@
+         func( stylize('vows ', 'green')
+             + stylize(cmd, 'bold')
+             + ' ' + subject + ' '
+-            + (str ? (typeof(str) === 'string' ? str : inspect(str)) : '')
++            + (str ? str : '')
+         );
+     }
+ }
+--- a/lib/vows/console.js
++++ b/lib/vows/console.js
+@@ -1,5 +1,3 @@
+-var eyes = require('eyes').inspector({ stream: null, styles: false });
+-
+ // Stylize a string
+ this.stylize = function stylize(str, style) {
+     if (module.exports.nocolor) {
+@@ -93,10 +91,10 @@
+ 
+ this.inspect = function inspect(val) {
+     if (module.exports.nocolor) {
+-      return eyes(val);
++      return val;
+     }
+ 
+-    return '\033[1m' + eyes(val) + '\033[22m';
++    return '\033[1m' + val + '\033[22m';
+ };
+ 
+ this.error = function (obj) {
