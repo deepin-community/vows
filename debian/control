@@ -9,7 +9,7 @@ Build-Depends: debhelper-compat (= 13)
  , node-diff <!nocheck>
  , node-glob <!nocheck>
  , dh-sequence-nodejs
-Standards-Version: 4.5.1
+Standards-Version: 4.6.0
 Vcs-Browser: https://salsa.debian.org/js-team/vows
 Vcs-Git: https://salsa.debian.org/js-team/vows.git
 Homepage: https://vowsjs.org/
@@ -20,7 +20,7 @@ Architecture: all
 Depends: ${misc:Depends}
  , node-diff
  , node-glob
- , nodejs
+ , nodejs:any
 Description: asynchronous BDD & continuous integration for Node
  Node is an event-based server-side JavaScript engine.
  .
